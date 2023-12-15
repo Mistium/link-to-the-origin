@@ -1,6 +1,6 @@
 
 mapx = 0
-mapy = 0
+mapy = -15
 playerx = 0
 playery = 0
 window "dimensions" 1024 640
