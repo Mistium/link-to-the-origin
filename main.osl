@@ -1,1 +1,40 @@
 
+mapx = 0
+mapy = 0
+playerx = 0
+playery = 0
+window "dimensions" 1024 640
+window "resizable" false
+
+mainloop:
+if "w".pressed "playery_vel -= 5"
+if "a".pressed "playerx_vel += 5"
+if "s".pressed "playery_vel += 5"
+if "d".pressed "playerx_vel -= 5"
+
+if playerx < -512 (
+    playerx = 512
+    mapx += 1024
+)
+if playerx > 512 (
+    playerx = -512
+    mapx -= 1024
+)
+if playery > 320 (
+    playery = -320
+    mapy -= 640
+) 
+if playery < -320 (
+    playery = 320
+    mapy += 640
+)
+playerx -= playerx_vel
+playery -= playery_vel
+playerx_vel *= 0.7
+playery_vel *= 0.7
+
+goto mapx mapy
+image "https://raw.githubusercontent.com/Mistium/link-to-the-origin/main/Zelda3LightOverworld.png" 20000
+goto playerx playery
+square 100 100 10 : c#333
+import "win-buttons"
